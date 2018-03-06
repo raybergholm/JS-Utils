@@ -1,7 +1,15 @@
-import { describe, it } from "mocha";
-import { expect } from "chai";
+import {
+    describe,
+    it
+} from "mocha";
+import {
+    expect
+} from "chai";
 
-import objectUtils, { map, filter } from "../src/object";
+import objectUtils, {
+    map,
+    filter
+} from "../src/object";
 
 describe("Automated tests for JS-Utils--object.js", () => {
 
@@ -14,7 +22,7 @@ describe("Automated tests for JS-Utils--object.js", () => {
             test: 5
         };
         const expectedOutput = {
-            hi: 1,
+            hi: 3,
             world: 6,
             i: 9,
             a: 12,
@@ -24,13 +32,13 @@ describe("Automated tests for JS-Utils--object.js", () => {
         const multiplyNumberByThree = input => input * 3;
 
         const curried = objectUtils(testInput);
-        
+
         expect(curried.map(multiplyNumberByThree)).to.equal(expectedOutput);
-        expect(objectUtils(testInput)(multiplyNumberByThree)).to.equal(expectedOutput);
+        expect(objectUtils(testInput).map(multiplyNumberByThree)).to.equal(expectedOutput);
         expect(map(testInput)(multiplyNumberByThree)).to.equal(expectedOutput);
     });
 
-    it("Object.filter: bad input", () => {
+    it("Object.map: bad input", () => {
         expect(objectUtils(null).map().to.throw());
         expect(objectUtils().map().to.throw());
         expect(objectUtils(null).map("this is an invalid param").to.throw());
@@ -52,12 +60,19 @@ describe("Automated tests for JS-Utils--object.js", () => {
 
         const filterAboveFive = input => input > 5;
 
-        const curried = objectUtils(testInput);
-        
-        expect(curried.filter(filterAboveFive)).to.equal(expectedOutput);
-        expect(objectUtils(testInput)(filterAboveFive)).to.equal(expectedOutput);
-        expect(filter(testInput)(filterAboveFive)).to.equal(expectedOutput);
+        it("Curried object", () => {
+            const curried = objectUtils(testInput);
+
+            expect(curried.filter(filterAboveFive)).to.equal(expectedOutput);
+            expect(objectUtils(testInput).filter(filterAboveFive)).to.equal(expectedOutput);
+
+        });
+
+        it("Filter function", () => {
+            expect(filter(testInput)(filterAboveFive)).to.equal(expectedOutput);
+        });
+
     });
 
-    
+
 });
