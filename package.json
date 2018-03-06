@@ -1,0 +1,22 @@
+{
+    "private": true,
+    "name": "js-utils",
+    "version": "0.1.0",
+    "author": "Raymond Bergholm",
+    "description": "",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/raybergholm/JS-Utils.git"
+    },
+    "license": "MIT",
+    "main": "",
+    "scripts": {
+        "test": ""
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "chai": "^4.1.2",
+        "eslint": "^4.18.2",
+        "mocha": "^5.0.2"
+    }
+}
