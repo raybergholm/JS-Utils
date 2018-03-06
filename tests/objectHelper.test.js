@@ -7,10 +7,10 @@ import {
     expect
 } from "chai";
 
-import objectUtils, {
+import objectHelper, { // TODO: babel seems to explode when importing, can't find Object.keys()?
     map,
     filter
-} from "../src/object";
+} from "../src/objectHelper";
 
 describe("Automated tests for JS-Utils--object.js", () => {
     describe("Standard object.map functionality", () => {
@@ -36,10 +36,10 @@ describe("Automated tests for JS-Utils--object.js", () => {
         });
 
         it("Curried object", () => {
-            const curried = objectUtils(testInput);
+            const curried = objectHelper(testInput);
 
             expect(curried.map(multiplyNumberByThree)).to.equal(expectedOutput);
-            expect(objectUtils(testInput).map(multiplyNumberByThree)).to.equal(expectedOutput);
+            expect(objectHelper(testInput).map(multiplyNumberByThree)).to.equal(expectedOutput);
         });
 
         it("Just the function", () => {
@@ -48,9 +48,9 @@ describe("Automated tests for JS-Utils--object.js", () => {
     });
 
     describe("Object.map: bad input", () => {
-        expect(objectUtils(null).map().to.throw());
-        expect(objectUtils().map().to.throw());
-        expect(objectUtils(null).map("this is an invalid param").to.throw());
+        expect(objectHelper(null).map().to.throw());
+        expect(objectHelper().map().to.throw());
+        expect(objectHelper(null).map("this is an invalid param").to.throw());
     });
 
     describe("Standard object.filter functionality", () => {
@@ -70,10 +70,10 @@ describe("Automated tests for JS-Utils--object.js", () => {
         const filterAboveFive = input => input > 5;
 
         it("Curried object", () => {
-            const curried = objectUtils(testInput);
+            const curried = objectHelper(testInput);
 
             expect(curried.filter(filterAboveFive)).to.equal(expectedOutput);
-            expect(objectUtils(testInput).filter(filterAboveFive)).to.equal(expectedOutput);
+            expect(objectHelper(testInput).filter(filterAboveFive)).to.equal(expectedOutput);
         });
 
         it("Just the function", () => {
