@@ -38,7 +38,7 @@ export const readFile = (file, inputReadMode = ReadModes.Text) => new Promise(
     }
 );
 
-export const readFiles = (files, inputReadMode) => Promise.all(Array.from(files.map(file => readFile(file, inputReadMode))));
+export const readFiles = (files, inputReadMode) => Promise.all(Array.from(files).map(file => readFile(file, inputReadMode)));
 
 export default {
     readFile: readFile,
