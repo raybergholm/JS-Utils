@@ -218,7 +218,7 @@ describe("objectHelper tests", () => {
                 expect(() => objectHelper("this is an invalid param").filter("this is also invalid")).to.throw(TypeError);
             });
 
-            it("Array input: converts to object with numeric keys, values untouched", () => {
+            it("Array input: converts to object with numeric keys, values affected by predicate", () => {
                 const testInput = [
                     "arrays",
                     "do",
@@ -226,11 +226,16 @@ describe("objectHelper tests", () => {
                     "own",
                     "thing"
                 ];
-                const alwaysTrue = () => true;
-                const result = filter(testInput, alwaysTrue);
+                const expectedOutput = [
+                    "arrays",
+                    "their",
+                    "thing"
+                ];
+                const longerThanThree = (input) => input.length > 3;
+                const result = filter(testInput, longerThanThree);
                 
-                expect(result).to.be.an("object").and.have.all.keys("0", "1", "2", "3", "4");
-                expect(Object.values(result)).to.have.members(testInput);
+                expect(result).to.be.an("object").and.have.all.keys("0", "2", "4");
+                expect(Object.values(result)).to.have.members(expectedOutput);
             });
 
             it("Empty arrays coerces to empty object", () => {
