@@ -14,7 +14,7 @@ import {
 } from "../src/arrayHelper";
 
 describe("arrayHelper tests", () => {
-    describe("Array diff tests", () => {
+    describe("Array item intersection and difference tests", () => {
         describe("Primitive types using default comparator", () => {
             const left = [1,2,3];
             const right = [2,3,4];
