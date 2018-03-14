@@ -27,20 +27,20 @@ describe("arrayHelper tests", () => {
                 expect(leftDiff(left, left)()).to.be.an("array").that.has.lengthOf(0);
             });
 
-            it("intersection returns common items", () => {
-                expect(intersect(left, right)()).to.be.an("array").that.has.lengthOf(2).and.contains(2).and.contains(3);
+            it("Intersection returns common items", () => {
+                expect(intersect(left, right)()).to.be.an("array").that.has.lengthOf(2).and.has.members([2, 3]);
             });
 
-            it("left difference returns left unique items", () => {
-                expect(leftDiff(left, right)()).to.be.an("array").that.has.lengthOf(1).and.contains(1);
+            it("Left difference returns left unique items", () => {
+                expect(leftDiff(left, right)()).to.be.an("array").that.has.lengthOf(1).and.has.members([1]);
             });
 
-            it("right difference returns right unique items", () => {
-                expect(rightDiff(left, right)()).to.be.an("array").that.has.lengthOf(1).and.contains(4);
+            it("Right difference returns right unique items", () => {
+                expect(rightDiff(left, right)()).to.be.an("array").that.has.lengthOf(1).and.has.members([4]);
             });
 
-            it("symmetrical difference returns both sets", () => {
-                expect(symmDiff(left, right)()).to.be.an("array").that.has.lengthOf(2).and.contains(1).and.contains(4);
+            it("Symmetrical difference returns both sets", () => {
+                expect(symmDiff(left, right)()).to.be.an("array").that.has.lengthOf(2).and.has.members([1, 4]);
             });
         });
 
@@ -60,23 +60,23 @@ describe("arrayHelper tests", () => {
             });
 
             it("Same array contents return empty array", () => {
-                expect(leftDiff(left, left)(comparator)).to.be.an("array").that.has.lengthOf(0);
+                expect(leftDiff(left, left)(comparator)).to.be.an("array").that.is.empty;
             });
 
-            it("intersection returns common items", () => {
-                expect(intersect(left, right)(comparator)).to.be.an("array").that.has.lengthOf(2).and.contains(item2).and.contains(item3);
+            it("Intersection returns common items", () => {
+                expect(intersect(left, right)(comparator)).to.be.an("array").that.has.lengthOf(2).and.with.members([item2, item3]);
             });
 
-            it("left difference returns left unique items", () => {
-                expect(leftDiff(left, right)(comparator)).to.be.an("array").that.has.lengthOf(1).and.contains(item1);
+            it("Left difference returns left unique items", () => {
+                expect(leftDiff(left, right)(comparator)).to.be.an("array").that.has.lengthOf(1).and.with.members([item1]);
             });
 
-            it("right difference returns right unique items", () => {
-                expect(rightDiff(left, right)(comparator)).to.be.an("array").that.has.lengthOf(1).and.contains(item4);
+            it("Right difference returns right unique items", () => {
+                expect(rightDiff(left, right)(comparator)).to.be.an("array").that.has.lengthOf(1).and.with.members([item4]);
             });
 
-            it("symmetrical difference returns both sets", () => {
-                expect(symmDiff(left, right)(comparator)).to.be.an("array").that.has.lengthOf(2).and.contains(item1).and.contains(item4);
+            it("Symmetrical difference returns both sets", () => {
+                expect(symmDiff(left, right)(comparator)).to.be.an("array").that.has.lengthOf(2).and.with.members([item1, item4]);
             });
         });
     });
