@@ -12,7 +12,7 @@ import objectHelper, { // TODO: babel seems to explode when importing, can't fin
     filter
 } from "../src/objectHelper";
 
-describe("Automated tests for JS-Utils--object.js", () => {
+describe("objectHelper tests", () => {
     describe("Standard object.map functionality", () => {
         const testInput = {
             hi: 1,

@@ -17,7 +17,7 @@ import httpsRequest, {
     del
 } from "../src/httpsRequest";
 
-describe("Automated tests for JS-Utils--httpsRequest.js", () => {
+describe("httpsRequest tests", () => {
 
     it("This file was read", () => {
         expect(1).to.be.equal(1);
