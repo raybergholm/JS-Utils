@@ -10,15 +10,15 @@ export const filter = (source, predicate) => Object.keys(source).reduce((reducer
     return reducer;
 }, {});
 
-export const each = source => (destination, callback) => Object.keys(source).reduce((reducer, prop) => {
-    destination = callback(source[prop], prop);
-    return destination;
-}, destination);
+export const each = (source, callback, reducer) => Object.keys(source).reduce((reducer, prop) => {
+    reducer = callback(source[prop], prop);
+    return reducer;
+}, reducer);
 
 export default (source) => {
     return {
         map: (callback) => map(source, callback),
         filter: (callback) => filter(source, callback),
-        each: (callback) => each(source, callback)
+        each: (callback, reducer) => each(source, callback, reducer)
     };
 };
