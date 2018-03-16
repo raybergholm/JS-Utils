@@ -18,6 +18,7 @@ export const each = source => (destination, callback) => Object.keys(source).red
 export default (source) => {
     return {
         map: (callback) => map(source, callback),
-        filter: (callback) => filter(source, callback)
+        filter: (callback) => filter(source, callback),
+        each: (callback) => each(source, callback)
     };
 };
