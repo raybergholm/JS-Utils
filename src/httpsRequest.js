@@ -17,7 +17,7 @@ const createOptions = (hostname, path, method, port = DEFAULT_PORT, headers = DE
     };
 };
 
-export const request = (hostname, path, method, payload = null, port = DEFAULT_PORT, headers = DEFAULT_HEADERS.CONTENT_JSON) => {
+export const request = (hostname, path = "", method, payload = null, port = DEFAULT_PORT, headers = DEFAULT_HEADERS.CONTENT_JSON) => {
     const options = createOptions(hostname, encodeURI(path), method, port, headers);
 
     return new Promise((resolve, reject) => {
