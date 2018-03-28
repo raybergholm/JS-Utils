@@ -1,6 +1,6 @@
 // Execute the callback for each property in source then return a new object with the same properties as source.
 export const map = (source, callback) => Object.keys(source).reduce((reducer, prop) => {
-    reducer[prop] = callback(source[prop]);
+    reducer[prop] = callback(source[prop], prop);
     return reducer;
 }, {});
 
@@ -19,10 +19,8 @@ export const each = (source, callback, reducer) => Object.keys(source).reduce((r
 }, reducer);
 
 // Partial currying: wraps around the source and allows you to execute any of the objectHelper methods on it.
-export default (source) => {
-    return {
-        map: (callback) => map(source, callback),
-        filter: (callback) => filter(source, callback),
-        each: (callback, reducer) => each(source, callback, reducer)
-    };
-};
+export default (source) => ({
+    map: (callback) => map(source, callback),
+    filter: (callback) => filter(source, callback),
+    each: (callback, reducer) => each(source, callback, reducer)
+});
